@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Copy, Pencil, Trash2, Save, Check, Github } from "lucide-react";
 
 interface TextBlock {
   id: string;
@@ -13,6 +14,8 @@ export default function LocalPage() {
   const [blocks, setBlocks] = useState<TextBlock[]>([]);
   const [editingBlockId, setEditingBlockId] = useState<string | null>(null);
   const [editingContent, setEditingContent] = useState("");
+  const [copiedBlockId, setCopiedBlockId] = useState<string | null>(null);
+  const [deletingBlockId, setDeletingBlockId] = useState<string | null>(null);
   // ahora usamos IDs cortos tipo hash de 4 caracteres
 
   // Cargar datos del localStorage al montar el componente
@@ -143,19 +146,30 @@ export default function LocalPage() {
     if (current) updateBlock(current.id, editingContent);
   };
 
-  // Convierte URLs en enlaces seguros que abren en nueva pestaña
-  const linkify = (text: string) => {
+  // Convierte URLs en enlaces y aplica formato markdown (negrita e itálica)
+  const formatText = (text: string) => {
     if (!text) return "";
     // escapar HTML básico
     const escapeHtml = (str: string) =>
       str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-    const escaped = escapeHtml(text);
+    let formatted = escapeHtml(text);
+
+    // 1. Linkify: Convierte URLs en enlaces
     const urlRegex = /((https?:\/\/|www\.)[\w\-.:/?#@!$&'()*+,;=%~]+)/g;
-    return escaped.replace(urlRegex, (match) => {
+    formatted = formatted.replace(urlRegex, (match) => {
       const url = match.startsWith("http") ? match : `https://${match}`;
       return `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">${match}</a>`;
     });
+
+    // 2. Bold: **texto** -> <strong>texto</strong>
+    formatted = formatted.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+
+    // 3. Italics: _texto_ -> <em>texto</em>
+    // Usamos un regex que intente no capturar guiones bajos dentro de enlaces o palabras
+    formatted = formatted.replace(/_([^_]+)_/g, "<em>$1</em>");
+
+    return formatted;
   };
 
   const addBlock = () => {
@@ -181,19 +195,33 @@ export default function LocalPage() {
     );
   };
 
+  const copyToClipboard = (id: string, text: string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedBlockId(id);
+      setTimeout(() => setCopiedBlockId(null), 2000);
+    });
+  };
+
   const deleteBlock = (id: string) => {
-    if (!confirm("¿Estás seguro que quieres eliminar este bloque?")) return;
-    setBlocks((prev) => prev.filter((block) => block.id !== id));
+    if (deletingBlockId === id) {
+      setBlocks((prev) => prev.filter((block) => block.id !== id));
+      setDeletingBlockId(null);
+    } else {
+      setDeletingBlockId(id);
+      setTimeout(() => {
+        setDeletingBlockId((current) => (current === id ? null : current));
+      }, 3000);
+    }
   };
 
   return (
     <section className="mb-8">
       <div className="mb-8">
         <h1 className="mb-4 text-2xl font-semibold tracking-tighter">
-          Local Notes
+          Bloques de Notas
         </h1>
         <p className="mb-6 text-gray-600 dark:text-gray-400">
-          Bloque de notas que se guardan automáticamente en tu navegador
+          Se guardan automáticamente en el <strong>almacenamiento local</strong> de tu navegador
         </p>
 
         <div className="flex gap-4 mb-6">
@@ -260,39 +288,54 @@ export default function LocalPage() {
                 />
                 <div className="flex items-center gap-3">
                   <button
+                    onClick={() => copyToClipboard(block.id, block.content)}
+                    className={`flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer ${copiedBlockId === block.id
+                      ? "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400"
+                      : "text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                      }`}
+                    title="Copiar todo el texto"
+                  >
+                    {copiedBlockId === block.id ? (
+                      <>
+                        <Check className="w-4 h-4" />
+                        <span>Copiado!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="w-4 h-4" />
+                        <span>Copiar</span>
+                      </>
+                    )}
+                  </button>
+
+                  <button
                     onClick={() => toggleEditBlock(block)}
                     className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="w-4 h-4"
-                      aria-hidden="true"
-                    >
-                      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-                    </svg>
-                    <span>
-                      {editingBlockId === block.id ? "Guardar" : "Editar"}
-                    </span>
+                    {editingBlockId === block.id ? (
+                      <>
+                        <Save className="w-4 h-4" />
+                        <span>Guardar</span>
+                      </>
+                    ) : (
+                      <>
+                        <Pencil className="w-4 h-4" />
+                        <span>Editar</span>
+                      </>
+                    )}
                   </button>
 
                   {editingBlockId === block.id && (
                     <button
                       onClick={() => deleteBlock(block.id)}
-                      className="flex items-center gap-1 text-red-500 hover:text-red-700 text-xs px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
-                      aria-label={`Eliminar ${block.title}`}
+                      className={`flex items-center gap-1 text-xs px-2 py-1 rounded transition-colors cursor-pointer ${deletingBlockId === block.id
+                        ? "bg-red-100 text-red-600 dark:bg-red-900/40 dark:text-red-400 font-bold"
+                        : "text-red-500 hover:text-red-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                        }`}
+                      aria-label={deletingBlockId === block.id ? " eliminación" : `Eliminar ${block.title}`}
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="w-4 h-4"
-                        aria-hidden="true"
-                      >
-                        <path d="M9 3a1 1 0 00-1 1v1H4a1 1 0 100 2h16a1 1 0 100-2h-4V4a1 1 0 00-1-1H9zM7 9a1 1 0 011 1v7a2 2 0 002 2h4a2 2 0 002-2v-7a1 1 0 112 0v7a4 4 0 01-4 4h-4a4 4 0 01-4-4v-7a1 1 0 011-1z" />
-                      </svg>
-                      <span>Eliminar</span>
+                      <Trash2 className="w-4 h-4" />
+                      <span>{deletingBlockId === block.id ? "Seguro?" : "Eliminar"}</span>
                     </button>
                   )}
                 </div>
@@ -315,14 +358,13 @@ export default function LocalPage() {
                   }}
                   placeholder="Escribe aquí..."
                   className="w-full min-h-[160px] p-3 border border-gray-300 dark:border-gray-600 rounded-md resize-y bg-black text-white focus:outline-none focus:ring-2 focus:ring-blue-500 whitespace-pre-wrap break-words break-all overflow-auto"
-                  autoFocus
                 />
               ) : (
                 <div
                   className="w-full min-h-[160px] p-3 border border-gray-300 dark:border-gray-600 rounded-md resize-y bg-white dark:bg-gray-800 text-black dark:text-white whitespace-pre-wrap break-words break-all overflow-auto"
                   // Mostrar contenido con links clicables y permitir click-to-edit salvo clicks en links
 
-                  onClick={(e) => {
+                  onDoubleClick={(e) => {
                     // si el target es un enlace o tiene un ancestro <a>, no entrar en modo edición
                     let node = e.target as HTMLElement | null;
                     while (node) {
@@ -335,7 +377,7 @@ export default function LocalPage() {
                     setEditingBlockId(block.id);
                     setEditingContent(block.content);
                   }}
-                  dangerouslySetInnerHTML={{ __html: linkify(block.content) }}
+                  dangerouslySetInnerHTML={{ __html: formatText(block.content) }}
                 />
               )}
               <div className="text-xs text-gray-400 mt-2">
@@ -347,6 +389,16 @@ export default function LocalPage() {
             </div>
           ))}
       </div>
+
+      <a
+        href="https://github.com/gonzalogramagia/local"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-8 right-8 p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 group z-50"
+        aria-label="GitHub Repository"
+      >
+        <Github className="w-6 h-6 text-gray-900 dark:text-white group-hover:text-blue-500 transition-colors" />
+      </a>
     </section>
   );
 }
