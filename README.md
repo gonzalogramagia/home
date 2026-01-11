@@ -21,6 +21,12 @@
     - **Quick Access**: Persistent floating buttons on both left and right corners for your favorite links.
     - **Fully Customizable**: Add, edit, or remove shortcuts with custom names and icons.
     - **Smart Search**: Built-in helper to find the perfect icon via Google Images.
+- **✅ Daily Tasks**:
+    - **Persistent Checklist**: A clean to-do list that saves your progress.
+    - **Smart Reset**: Automatically unchecks all tasks at midnight (Argentina Time 🇦🇷) so you're ready for a fresh start.
+- **⏳ Countdown Timer**:
+    - **Event Tracking**: Set a target date and time for your important events.
+    - **Visual Feedback**: Dynamic colors (Yellow < 15m, Red < 5m) and fun messages to keep you engaged.
 - **🎨 Modern UI**: Clean, responsive design with dark mode support and sleek [Lucide](https://lucide.dev/) icons.
 
 ---
@@ -34,10 +40,10 @@
 
 ---
 
-## � Usage
+## 🕹️ Usage
  
  ### ✍️ Creating and Editing Notes
- - **New Note**: Click the **"+ Agregar Bloque"** button to create a new note block.
+ - **New Note**: Click the **"+ Add Note"** (or "+ Agregar Nota") button to create a new note block.
  - **Edit Title**: Click on the note title (e.g., "Bloque #xyz") to rename it.
  - **Edit Content**: Double-click on the note body or click the **Pencil icon** to enter edit mode. 
  - **Save**: Click outside the note or press `Enter` (without Shift) to save your changes.
@@ -53,8 +59,17 @@
 
  ### 🔗 Floating Shortcuts
  - **Add**: Click the faded "+" button in the top corners to add a new shortcut.
- - **Edit**: Hover over a shortcut and click the pencil icon to modify it.
+ - **Edit**: Click on the specific shortcut's name tooltip to modify it.
  - **Delete**: Click the trash icon within the edit modal to remove a shortcut.
+
+ ### ✅ Daily Tasks
+ - **Add**: Use the input field at the bottom of the tasks list (left side) to add new daily todos.
+ - **Reset Info**: Hover over the clock icon 🕒 to see the auto-reset time.
+
+ ### ⏳ Countdown Timer
+ - **Set Event**: Use the input fields on the right side panel to set an event name and date/time.
+ - **Start**: Click "Start" to begin the countdown.
+ - **Delete**: Click the trash icon to remove the countdown and set a new one.
 
 ---
 
