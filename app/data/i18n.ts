@@ -23,7 +23,7 @@ export const dictionary: Record<Language, Dictionary> = {
     es: {
         title: "Bloques de Notas",
         subtitle: "Se guardan automáticamente en el <strong>almacenamiento local</strong> de tu navegador",
-        addBlock: "+ Agregar Bloque",
+        addBlock: "+ Agregar Nota",
         blockNamePlaceholder: "Nombre del bloque",
         copy: "Copiar",
         copied: "Copiado!",
@@ -41,7 +41,7 @@ export const dictionary: Record<Language, Dictionary> = {
     en: {
         title: "Note Blocks",
         subtitle: "Automatically saved in your browser's <strong>local storage</strong>",
-        addBlock: "+ Add Block",
+        addBlock: "+ Add Note",
         blockNamePlaceholder: "Block Name",
         copy: "Copy",
         copied: "Copied!",

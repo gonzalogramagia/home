@@ -28,6 +28,11 @@ export default function ShortcutFloater() {
         { name: 'Music', url: 'https://cdn-icons-png.freepik.com/256/26/26805.png' },
         { name: 'Video', url: 'https://img.icons8.com/ios_filled/1200/video.jpg' },
         { name: 'Task', url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIXtf51YFPgubduv43sWdb8OZD9BxI_g3iOA&s' },
+        { name: 'Goal', url: 'https://img.icons8.com/ink/1200/goal.jpg' },
+        { name: 'Study', url: 'https://cdn-icons-png.flaticon.com/512/566/566944.png' },
+        { name: 'Trophy', url: 'https://static.vecteezy.com/system/resources/previews/059/907/959/non_2x/trophy-black-illustration-vector.jpg' },
+        { name: 'Linux', url: 'https://icon-library.com/images/linux-tux-icon/linux-tux-icon-1.jpg' },
+        { name: 'Job', url: 'https://static.vecteezy.com/system/resources/previews/021/839/489/non_2x/recruitment-black-glyph-icon-hiring-process-choosing-candidate-job-position-headhunting-application-silhouette-symbol-on-white-space-solid-pictogram-isolated-illustration-vector.jpg' },
     ]
 
     const t = {

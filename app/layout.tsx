@@ -1,5 +1,6 @@
 import './global.css'
 import ShortcutFloater from './components/ShortcutFloater'
+import DailyTasks from './components/DailyTasks'
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
@@ -57,6 +58,7 @@ export default function RootLayout({
     >
       <body className="antialiased" cz-shortcut-listen="true">
         <ShortcutFloater />
+        <DailyTasks />
         {children}
       </body>
     </html>
