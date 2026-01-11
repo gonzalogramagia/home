@@ -1,4 +1,5 @@
 import './global.css'
+import ShortcutFloater from './components/ShortcutFloater'
 import type { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
@@ -55,6 +56,7 @@ export default function RootLayout({
       )}
     >
       <body className="antialiased" cz-shortcut-listen="true">
+        <ShortcutFloater />
         {children}
       </body>
     </html>

@@ -16,7 +16,11 @@
 - **🖱️ Smart Interactions**:
     - **Double-click to Edit**: Prevents accidental triggers while allowing easy text selection.
 - **📋 Clipboard Mastery**: One-click "Copiar" button with instant in-button feedback.
-- **🗑️ Safe Deletion**: Two-step confirmation system ("Eliminar" ➔ "Seguro?") to avoid mistakes.
+- **🗑️ Safe Deletion**: Two-step confirmation system ("Delete" ➔ "Sure?") to avoid mistakes.
+- **🔗 Floating Shortcuts**:
+    - **Quick Access**: Persistent floating buttons on both left and right corners for your favorite links.
+    - **Fully Customizable**: Add, edit, or remove shortcuts with custom names and icons.
+    - **Smart Search**: Built-in helper to find the perfect icon via Google Images.
 - **🎨 Modern UI**: Clean, responsive design with dark mode support and sleek [Lucide](https://lucide.dev/) icons.
 
 ---
@@ -42,10 +46,15 @@
  - **Trigger**: Type `:` followed by a keyword (e.g., `:rocket`) inside any note.
  - **Select**: Use `Arrow` keys to navigate and `Enter` to insert the emoji.
  
- ### 🔗 Quick Actions
+ ### ⚡ Quick Actions
  - **Copy**: Click the **Copy icon** to copy the entire note content to your clipboard.
  - **Delete**: Click the **Trash icon** twice (Safe Delete) to permanently remove a note.
  - **Emojis Site**: Click the **Smile button** in the bottom-left corner to explore more emojis.
+
+ ### 🔗 Floating Shortcuts
+ - **Add**: Click the faded "+" button in the top corners to add a new shortcut.
+ - **Edit**: Hover over a shortcut and click the pencil icon to modify it.
+ - **Delete**: Click the trash icon within the edit modal to remove a shortcut.
 
 ---
 
