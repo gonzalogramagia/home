@@ -89,7 +89,7 @@ export default function ShortcutFloater() {
 
         const ensureUrl = (str: string) => {
             if (!str) return ''
-            if (str.startsWith('http://') || str.startsWith('https://')) return str
+            if (str.startsWith('http://') || str.startsWith('https://') || str.startsWith('data:')) return str
             return `https://${str}`
         }
 
