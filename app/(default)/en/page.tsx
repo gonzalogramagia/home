@@ -1,7 +1,7 @@
 "use client";
 
-import FloatingLinks from "../../components/FloatingLinks";
+import Home from "../../components/Home";
 
 export default function LocalPageEn() {
-    return <FloatingLinks lang="en" />;
+    return <Home lang="en" />;
 }
