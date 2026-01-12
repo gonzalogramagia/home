@@ -412,7 +412,8 @@ export default function NoteApp({ lang }: NoteAppProps) {
 
                 <div className="flex items-center gap-4 mb-4">
                     <h1 className="text-2xl font-semibold tracking-tighter">
-                        {t.title}
+                        📝
+                        <span className="ml-3">{t.title}</span>
                     </h1>
                     <button
                         onClick={addBlock}

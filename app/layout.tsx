@@ -11,20 +11,20 @@ const baseUrl = 'https://home.gonzalogramagia.com'
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Local Storage',
-    template: '%s | Local',
+    default: 'Home',
+    template: '%s | Home',
   },
-  description: 'Herramienta para crear notas en localhost.',
+  description: 'Tu espacio personal productivo. Notas, tareas y accesos directos guardados 100% en tu navegador.',
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
     apple: '/apple-touch-icon.png',
   },
   openGraph: {
-    title: 'Local',
-    description: 'Herramienta para crear notas en localhost.',
+    title: 'Home',
+    description: 'Tu espacio personal productivo. Notas, tareas y accesos directos guardados 100% en tu navegador.',
     url: baseUrl,
-    siteName: 'Local',
+    siteName: 'Home',
     locale: 'es_ES',
     type: 'website',
   },

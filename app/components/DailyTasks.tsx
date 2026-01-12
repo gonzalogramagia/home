@@ -114,11 +114,7 @@ export default function DailyTasks() {
 
     const confirmDelete = (id: string) => {
         if (deletingId === id) {
-            if (id === 'cancel-form') {
-                setIsAdding(false)
-            } else {
-                setTasks(tasks.filter(t => t.id !== id))
-            }
+            setTasks(tasks.filter(t => t.id !== id))
             setDeletingId(null)
         } else {
             setDeletingId(id)
@@ -210,10 +206,14 @@ export default function DailyTasks() {
                             </button>
                             <button
                                 type="button"
-                                onClick={() => confirmDelete('cancel-form')}
-                                className={`rounded p-1.5 transition-colors cursor-pointer ${deletingId === 'cancel-form' ? 'bg-red-100 text-red-500 dark:bg-red-900/20 dark:text-red-400' : 'bg-zinc-200 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:bg-red-100 hover:text-red-500 dark:hover:bg-red-900/20 dark:hover:text-red-400'}`}
+                                onClick={() => {
+                                    setIsAdding(false)
+                                    setInputValue('')
+                                    setUrlValue('')
+                                }}
+                                className="rounded p-1.5 transition-colors cursor-pointer bg-zinc-200 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 hover:bg-red-100 hover:text-red-500 dark:hover:bg-red-900/20 dark:hover:text-red-400"
                             >
-                                {deletingId === 'cancel-form' ? <Check size={14} /> : <Trash2 size={14} />}
+                                <Trash2 size={14} />
                             </button>
                         </div>
                         <input
