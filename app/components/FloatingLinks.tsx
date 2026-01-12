@@ -12,11 +12,11 @@ interface TextBlock {
     content: string;
 }
 
-interface NoteAppProps {
+interface FloatingLinksProps {
     lang: Language;
 }
 
-export default function NoteApp({ lang }: NoteAppProps) {
+export default function FloatingLinks({ lang }: FloatingLinksProps) {
     const t = dictionary[lang];
     const [blocks, setBlocks] = useState<TextBlock[]>([]);
     const [editingBlockId, setEditingBlockId] = useState<string | null>(null);
@@ -640,35 +640,37 @@ export default function NoteApp({ lang }: NoteAppProps) {
                 </a>
             </div>
 
-            {/* Left Side Buttons: Home + Emojis + Music + ClickUp */}
+            {/* Left Side Buttons: Home + Emojis + Music + Tasks */}
             <div className="fixed bottom-8 left-8 flex gap-3 z-50">
                 <button
                     disabled
                     className="p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full shadow-lg transition-all opacity-50 cursor-not-allowed group"
-                    aria-label={t.ariaHome}
-                    title={t.ariaHome}
+                    aria-label={t.goToHome}
+                    title={t.goToHome}
                 >
                     <Home className="w-6 h-6 text-zinc-900 dark:text-white transition-colors" />
                 </button>
                 <a
                     href={emojisUrl}
                     className="p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 group"
-                    aria-label={t.ariaEmojis}
+                    aria-label={t.goToEmojis}
+                    title={t.goToEmojis}
                 >
                     <Smile className="w-6 h-6 text-gray-900 dark:text-white group-hover:text-yellow-500 transition-colors" />
                 </a>
                 <a
                     href="https://music.gonzalogramagia.com"
                     className="p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 group cursor-pointer"
-                    aria-label={t.ariaMusic}
-                    title={t.ariaMusic}
+                    aria-label={t.goToMusic}
+                    title={t.goToMusic}
                 >
                     <Music className="w-6 h-6 text-zinc-900 dark:text-white group-hover:text-yellow-500 transition-colors" />
                 </a>
                 <a
-                    href="https://clickup.gonzalogramagia.com"
+                    href="https://tasks.gonzalogramagia.com"
                     className="p-3 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 group cursor-pointer"
-                    aria-label="ClickUp Tools"
+                    aria-label={t.goToTasks}
+                    title={t.goToTasks}
                 >
                     <BowArrow className="w-6 h-6 text-gray-900 dark:text-white group-hover:text-yellow-500 transition-colors" />
                 </a>

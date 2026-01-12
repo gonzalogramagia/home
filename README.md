@@ -25,7 +25,7 @@
     - **Home**: (Disabled/Current)
     - **Emojis**: Fast access to emoji library.
     - **Music**: Direct link to your music layout.
-    - **ClickUp**: Quick access to project management.
+    - **Tasks**: Quick access to project management.
     - **GitHub**: Source code access.
 - **Fast Access**: All links open instantly in the same tab.
 

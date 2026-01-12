@@ -1,7 +1,7 @@
 "use client";
 
-import NoteApp from "../components/NoteApp";
+import FloatingLinks from "../components/FloatingLinks";
 
 export default function LocalPage() {
-  return <NoteApp lang="es" />;
+  return <FloatingLinks lang="es" />;
 }

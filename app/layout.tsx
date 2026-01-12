@@ -16,9 +16,9 @@ export const metadata: Metadata = {
   },
   description: 'Tu espacio personal productivo. Notas, tareas y accesos directos guardados 100% en tu navegador.',
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    icon: '/favicon.ico?v=2',
+    shortcut: '/favicon.ico?v=2',
+    apple: '/apple-touch-icon.png?v=2',
   },
   openGraph: {
     title: 'Home',

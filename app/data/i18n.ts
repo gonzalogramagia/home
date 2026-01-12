@@ -21,6 +21,10 @@ export interface Dictionary {
     ariaMusic: string;
     moveUp: string;
     moveDown: string;
+    goToHome: string;
+    goToEmojis: string;
+    goToMusic: string;
+    goToTasks: string;
 }
 
 export const dictionary: Record<Language, Dictionary> = {
@@ -45,11 +49,15 @@ export const dictionary: Record<Language, Dictionary> = {
         ariaMusic: "Musica",
         moveUp: "Mover Arriba",
         moveDown: "Mover Abajo",
+        goToHome: "Ir a Home",
+        goToEmojis: "Ir a Emojis",
+        goToMusic: "Ir a Música",
+        goToTasks: "Ir a Tareas",
     },
     en: {
-        title: "Note Blocks",
+        title: "NOTES",
         subtitle: "Automatically saved in your browser's <strong>local storage</strong>",
-        addBlock: "Add +",
+        addBlock: "Add new +",
         blockNamePlaceholder: "Block Name",
         copy: "Copy",
         copied: "Copied!",
@@ -67,5 +75,9 @@ export const dictionary: Record<Language, Dictionary> = {
         ariaMusic: "Music",
         moveUp: "Move Up",
         moveDown: "Move Down",
+        goToHome: "Go to Home",
+        goToEmojis: "Go to Emojis",
+        goToMusic: "Go to Music",
+        goToTasks: "Go to Tasks",
     },
 };
