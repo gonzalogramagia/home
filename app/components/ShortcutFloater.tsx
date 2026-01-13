@@ -195,7 +195,7 @@ export default function ShortcutFloater() {
             {sides.map((side) => (
                 <div
                     key={side}
-                    className={`fixed top-4 ${side === 'left' ? 'left-4' : 'right-4'} flex items-center gap-2 z-50`}
+                    className={`fixed top-4 ${side === 'left' ? 'left-4' : 'right-4'} flex items-center gap-2 z-30`}
                 >
                     {/* Add Button - Left only for 'left' side */}
                     {side === 'left' && (
