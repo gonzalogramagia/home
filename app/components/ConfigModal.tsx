@@ -201,7 +201,7 @@ export default function ConfigModal({ lang, onClose, toggleLanguage, exportPath,
 
 
                     {/* Open in Tab Toggle */}
-                    <div className="flex items-center justify-between p-3 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl border border-zinc-100 dark:border-zinc-800">
+                    <div className="hidden sm:flex items-center justify-between p-3 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl border border-zinc-100 dark:border-zinc-800">
                         <div className="flex items-center gap-3">
                             <div className="p-2 bg-white dark:bg-zinc-800 rounded-lg shadow-sm">
                                 {openInTab ? <ExternalLink size={20} className="text-zinc-600 dark:text-zinc-400" /> : <AppWindow size={20} className="text-zinc-400 dark:text-zinc-600" />}
@@ -224,7 +224,7 @@ export default function ConfigModal({ lang, onClose, toggleLanguage, exportPath,
 
 
                 {/* Export / Import Buttons */}
-                <div className="grid grid-cols-2 gap-3 mt-6">
+                <div className="hidden sm:grid grid-cols-2 gap-3 mt-6">
                     <Link
                         href={importPath}
                         className="flex flex-col items-center justify-center gap-2 p-4 bg-zinc-50 dark:bg-zinc-800/50 border border-zinc-100 dark:border-zinc-800 rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all group cursor-pointer"
