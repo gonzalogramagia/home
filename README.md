@@ -78,6 +78,9 @@ To get the full experience and stay in the flow, I recommend these Chrome extens
 - **[Just Focus](https://chromewebstore.google.com/detail/just-focus/gefaddaengbodpiobpbgblajdboalmgc)**
   **Why?** A simple website blocker to eliminate distractions and keep your deep work sessions protected.
 
+- **[Browser Guard](https://chromewebstore.google.com/detail/malwarebytes-browser-guar/ihcjicgdanjaechkgeegckofjjedodee)**
+  **Why?** Blocks ads and trackers for a faster, safer, and cleaner browsing experience.
+
 ---
 
 Made with 💛 by [Gonza](https://github.com/gonzalogramagia)
