@@ -58,6 +58,10 @@ export default function RootLayout({
       )}
     >
       <body className="antialiased" cz-shortcut-listen="true">
+        <div
+          className="fixed inset-0 z-[-1] bg-cover bg-center bg-fixed bg-no-repeat opacity-10"
+          style={{ backgroundImage: "url('/wallpaper.png')" }}
+        />
         <ShortcutFloater />
         <DailyTasks />
         <Countdown />
