@@ -4,12 +4,19 @@
 @tailwind utilities;
 
 @keyframes occasional-bounce {
-  0%, 20%, 50%, 80%, 100% {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(-10px);
   }
+
   60% {
     transform: translateY(-5px);
   }
@@ -36,17 +43,7 @@
   --sh-entity: #e25a1c;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --sh-class: #4c97f8;
-    --sh-identifier: white;
-    --sh-keyword: #f47067;
-    --sh-string: #0fa295;
-  }
-  html {
-    color-scheme: dark;
-  }
-}
+
 
 html {
   min-width: 360px;
@@ -79,12 +76,14 @@ html {
 /* Botones Volver específicos - más específico que .prose a */
 .prose .volver-button,
 .volver-button {
-  color: #1f2937 !important; /* neutral-800 */
+  color: #1f2937 !important;
+  /* neutral-800 */
 }
 
 .dark .prose .volver-button,
 .dark .volver-button {
-  color: #ffffff !important; /* white */
+  color: #ffffff !important;
+  /* white */
 }
 
 /* Forzar color en todos los casos */
@@ -104,11 +103,7 @@ a.volver-button,
 }
 
 /* Forzar colores específicos para modo oscuro */
-@media (prefers-color-scheme: dark) {
-  :where(.prose) a[style*="color"] {
-    color: #ffffff !important;
-  }
-}
+
 
 /* Enlaces del home mantienen el color celeste */
 section:not(.prose) a {
@@ -126,7 +121,7 @@ section:not(.prose) a:hover {
   content: '#';
 }
 
-.prose *:hover > .anchor {
+.prose *:hover>.anchor {
   @apply visible;
 }
 
@@ -185,7 +180,7 @@ section:not(.prose) a:hover {
   @apply list-decimal pl-6;
 }
 
-.prose > :first-child {
+.prose> :first-child {
   /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
   margin-bottom: 1.25em !important;
@@ -196,8 +191,10 @@ pre::-webkit-scrollbar {
 }
 
 pre {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* Remove Safari input shadow on mobile */
