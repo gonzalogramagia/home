@@ -57,6 +57,7 @@ export default function RootLayout({
         GeistMono.variable
       )}
     >
+
       <body className="antialiased" cz-shortcut-listen="true">
         <div
           className="fixed inset-0 z-[-1] bg-cover bg-center bg-fixed bg-no-repeat opacity-5"
